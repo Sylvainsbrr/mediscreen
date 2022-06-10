@@ -1,0 +1,85 @@
+version: "3.3"
+services:
+
+  front-mediscreen:
+    build: front-mediscreen/front-mediscreen/.
+    ports: 
+      - "8080:80"
+    networks:
+      net_1:
+        ipv4_address: "172.20.0.7"
+
+  patient:
+    build: patient/.
+    ports: 
+      - "8082:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://patient_db:3306/patient
+    container_name: patient_service
+    restart: on-failure
+    depends_on:
+      - patient_database
+    networks:
+      net_1:
+        ipv4_address: "172.20.0.6"
+    
+  note:
+    build: notemediscreen/.
+    ports: 
+      - "8085:8083"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://note_db:27017/patient-note
+    container_name: note_service
+    restart: on-failure
+    depends_on:
+      - note_database
+    networks:
+      net_1:
+        ipv4_address: "172.20.0.5"
+
+
+  report:
+    build: report/.
+    ports: 
+    - "8091:8090"
+    environment:
+    - PATIENT_PROXY_URL=http://172.20.0.6:8081/
+    - NOTE_PROXY_URL=http://172.20.0.5:8083/
+    restart: on-failure
+    depends_on:
+      - patient
+      - note
+    networks:
+      net_1:
+        ipv4_address: "172.20.0.4"
+
+
+  patient_database:
+    image: "mysql:5.7"
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=patient
+    container_name: patient_db
+    networks:
+      net_1:
+        ipv4_address: "172.20.0.3"
+
+  note_database:
+    image: "mongo:latest"
+    ports:
+      - "8084:27017"
+    container_name: note_db
+    networks:
+      net_1:
+        ipv4_address: "172.20.0.2"
+
+  
+networks:
+  net_1:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+    
+
