@@ -27,6 +27,8 @@ You will need to install MySQL and create a database with the name "patient"
 
 You will need to install MongoDB with Angular and Nodejs lastest version for the front-end to work
 
+Do a Maven clean and install for each back-end services
+
 Use comand for each repositories : mvn spring-boot:run
 
 Execute comand : "npm install" 
