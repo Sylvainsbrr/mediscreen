@@ -12,8 +12,6 @@ Mediscreen specializes in detecting risk factors for disease
 Installing the app with docker
 ------------------------------
 
-First Step :
-
 -Install @angular/cli and nodejs and docker globally
 
 -In mediscreen/frontmediscreen/frontmediscreen
@@ -23,8 +21,8 @@ Execute command : npm install
 Execute command: ng build --configuration production
 
 -In the root directory of the project /mediscreen:
- 
- Execute comand : "docker-compose up -d"  in the project root
+
+Execute comand : "docker-compose up -d"  in the project root
  
  Go to http://localhost:8080/
  
