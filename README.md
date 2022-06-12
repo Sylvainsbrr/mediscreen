@@ -12,9 +12,17 @@ Mediscreen specializes in detecting risk factors for disease
 Installing the app with docker
 ------------------------------
 
-Install @angular/cli and nodejs globally
+First Step :
 
- Execute comand : "ng build --configuration production" in the front-end directory
+-Install @angular/cli and nodejs and docker globally
+
+-In mediscreen/frontmediscreen/frontmediscreen
+
+Execute command : npm install -g @angular/cli
+Execute command : npm install
+Execute command: ng build --configuration production
+
+-In the root directory of the project /mediscreen:
  
  Execute comand : "docker-compose up -d"  in the project root
  
@@ -23,9 +31,15 @@ Install @angular/cli and nodejs globally
 Installing the app locally with each repositories
 -------------------------------------------------
 
+Repositories:
+-Front-end: https://github.com/Sylvainsbrr/front-mediscreen
+-noteservice: https://github.com/Sylvainsbrr/notemediscreen
+-patientservice: https://github.com/Sylvainsbrr/patient
+-reportservice: https://github.com/Sylvainsbrr/report
+
 You will need to install MySQL and create a database with the name "patient"
 
-You will need to install MongoDB with Angular and Nodejs lastest version for the front-end to work
+You will need to install MongoDB with Angular and Nodejs
 
 Do a Maven clean and install for each back-end services
 
