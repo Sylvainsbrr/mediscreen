@@ -16,9 +16,9 @@ Installing the app with docker
 
 -In mediscreen/frontmediscreen/frontmediscreen
 
-Execute command : npm install -g @angular/cli
-Execute command : npm install
-Execute command: ng build --configuration production
+-Execute command : npm install -g @angular/cli
+-Execute command : npm install
+-Execute command: ng build --configuration production
 
 -In the root directory of the project /mediscreen:
 
