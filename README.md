@@ -29,22 +29,22 @@ Execute comand : "docker-compose up -d"  in the project root
 Installing the app locally with each repositories
 -------------------------------------------------
 
-Repositories:
--Front-end: https://github.com/Sylvainsbrr/front-mediscreen
--noteservice: https://github.com/Sylvainsbrr/notemediscreen
--patientservice: https://github.com/Sylvainsbrr/patient
--reportservice: https://github.com/Sylvainsbrr/report
+Repositories:  
+-Front-end: https://github.com/Sylvainsbrr/front-mediscreen  
+-noteservice: https://github.com/Sylvainsbrr/notemediscreen  
+-patientservice: https://github.com/Sylvainsbrr/patient  
+-reportservice: https://github.com/Sylvainsbrr/report  
 
-You will need to install MySQL and create a database with the name "patient"
+You will need to install MySQL and create a database with the name "patient"  
 
-You will need to install MongoDB with Angular and Nodejs
+You will need to install MongoDB with Angular and Nodejs  
 
-Do a Maven clean and install for each back-end services
+Do a Maven clean and install for each back-end services  
 
-Use comand for each repositories : mvn spring-boot:run
+Use comand for each repositories : mvn spring-boot:run  
 
-Execute comand : "npm install" 
-Execute comand : "npm start"
+Execute comand : "npm install"   
+Execute comand : "npm start"  
 
  Go to http://localhost:4200/
 
