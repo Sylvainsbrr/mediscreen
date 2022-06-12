@@ -7,7 +7,7 @@ Mediscreen specializes in detecting risk factors for disease
 ## Technologies
 - Java 11
 - Spring Boot 2.5.13
-- Angular
+- Angular 13
 
 Installing the app with docker
 ------------------------------
