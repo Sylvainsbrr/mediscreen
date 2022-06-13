@@ -12,7 +12,8 @@ Mediscreen specializes in detecting risk factors for disease
 Installing the app with docker
 ------------------------------
 
--Install @angular/cli and nodejs and docker globally
+-Install Java and maven Globally  
+-Install @angular/cli and nodejs and docker globally 
 
 -In mediscreen/frontmediscreen
 
