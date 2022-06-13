@@ -40,16 +40,25 @@ Installing the app locally with each repositories
 -------------------------------------------------
 
 Repositories:  
+
 You will need to install MySQL and create a database with the name "patient"  
 
 You will need to install MongoDB with Angular and Nodejs  
 
-Do a Maven clean and install for each back-end services  
+For each back-end services :
 
-Use comand for each repositories : mvn spring-boot:run  
+In mediscreen/patient :  
+-Execute comand: mvn spring-boot:run    
 
-Execute comand : "npm install"   
-Execute comand : "npm start"  
+In mediscreen/notemediscreen :  
+-Execute comand: mvn spring-boot:run   
+
+In mediscreen/report :  
+-Execute comand: mvn spring-boot:run   
+
+For the mediscreen/frontmediscreen
+-Execute comand : "npm install"   
+-Execute comand : "npm start"   
 
  Go to http://localhost:4200/
 
