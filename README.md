@@ -14,7 +14,7 @@ Installing the app with docker
 
 -Install @angular/cli and nodejs and docker globally
 
--In mediscreen/frontmediscreen/frontmediscreen
+-In mediscreen/frontmediscreen
 
 -Execute command : npm install -g @angular/cli  
 -Execute command : npm install  
