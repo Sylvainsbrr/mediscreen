@@ -2,7 +2,7 @@ version: "3.3"
 services:
 
   front-mediscreen:
-    build: front-mediscreen/front-mediscreen/.
+    build: front-mediscreen/.
     ports: 
       - "8080:80"
     networks:
