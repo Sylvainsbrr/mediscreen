@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PatientController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">patient</a> &gt; <a href="index.source.html" class="el_package">com.mediscreen.patient.controller</a> &gt; <span class="el_source">PatientController.java</span></div><h1>PatientController.java</h1><pre class="source lang-java linenums">package com.mediscreen.patient.controller;
+
+import com.mediscreen.patient.entity.Patient;
+import com.mediscreen.patient.exception.DataNotFoundException;
+import com.mediscreen.patient.service.PatientService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Objects;
+
+@Api(description = &quot;Gestion des patients&quot;)
+@RestController
+<span class="fc" id="L21">public class PatientController {</span>
+
+    @Autowired
+    private PatientService patientService;
+
+    @ApiOperation(value = &quot;Récupère un patient selon son ID&quot;)
+    @ApiResponses(value = {@ApiResponse(code = 404, message = &quot;Patient with id { id } doesn't exist in database&quot;)})
+    @GetMapping(value = &quot;/patient-info/{id}&quot;)
+    public Patient getPatientById(@PathVariable(&quot;id&quot;) int id) {
+<span class="fc" id="L30">        Patient patient = patientService.findById(id);</span>
+<span class="pc bpc" id="L31" title="1 of 2 branches missed.">        if (Objects.isNull(patient)) {</span>
+<span class="nc" id="L32">            throw new DataNotFoundException(&quot;Patient with id &quot; + id + &quot; doesn't exist in database&quot;);</span>
+        }
+<span class="fc" id="L34">        return patient;</span>
+    }
+
+    @ApiOperation(value = &quot;Récupère un patient selon son prénom et son nom&quot;)
+    @ApiResponses(value = {@ApiResponse(code = 404, message = &quot;Patient { firstName lastName } doesn't exist in database&quot;)})
+    @GetMapping(value = &quot;/patient&quot;)
+    public Patient getPatient(@RequestParam(&quot;firstName&quot;) String firstName, @RequestParam(&quot;lastName&quot;) String lastName) {
+<span class="fc" id="L41">        Patient patient = patientService.findByFirstNameAndLastName(firstName, lastName);</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (Objects.isNull(patient)) {</span>
+<span class="nc" id="L43">            throw new DataNotFoundException(&quot;Patient &quot; + firstName + &quot; &quot; + lastName + &quot; doesn't exist in database&quot;);</span>
+        }
+<span class="fc" id="L45">        return patient;</span>
+    }
+
+    @ApiOperation(value = &quot;Récupère tous les patients&quot;)
+    @ApiResponses(value = {@ApiResponse(code = 404, message = &quot;Any patients saved in database&quot;)})
+    @GetMapping(value = &quot;/patients&quot;)
+    public List&lt;Patient&gt; findAllPatients() {
+<span class="fc" id="L52">        List&lt;Patient&gt; patientList = patientService.findAllPatients();</span>
+<span class="pc bpc" id="L53" title="1 of 2 branches missed.">        if (patientList.isEmpty()) {</span>
+<span class="nc" id="L54">            throw new DataNotFoundException(&quot;Any patients saved in database&quot;);</span>
+        }
+<span class="fc" id="L56">        return patientList;</span>
+    }
+
+    @ApiOperation(value = &quot;Sauvegarde un patient&quot;)
+    @ApiResponses(value = {@ApiResponse(code = 404, message = &quot;Patient { firstName lastName } already exist in database&quot;)})
+    @PostMapping(value = &quot;/patient&quot;, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Patient savePatient(@RequestBody Patient patient) {
+<span class="fc" id="L63">        patientService.savePatient(patient);</span>
+<span class="fc" id="L64">        Patient patientBo = patientService.findByFirstNameAndLastName(patient.getFirstName(), patient.getLastName());</span>
+<span class="fc" id="L65">        return patientBo;</span>
+    }
+
+    @ApiOperation(value = &quot;Supprimer un patient selon son ID&quot;)
+    @ApiResponses(value = {@ApiResponse(code = 404, message = &quot;Patient with id { id } to delete doesn't exist&quot;)})
+    @DeleteMapping(value = &quot;/patient/{id}&quot;)
+    public ResponseEntity&lt;String&gt; deletePatient(@PathVariable(&quot;id&quot;) int id) {
+<span class="fc" id="L72">        System.out.println(id);</span>
+<span class="fc" id="L73">        String response = patientService.deletePatient(id);</span>
+<span class="fc" id="L74">        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(response);</span>
+    }
+
+    @ApiOperation(value = &quot;Met à jour un patient selon son ID&quot;)
+    @ApiResponses(value = {@ApiResponse(code = 404, message = &quot;Patient with id { id } to update doesn't exist&quot;)})
+    @PutMapping(value = &quot;/patient/{id}&quot;)
+    public Patient updatePatient(@PathVariable(&quot;id&quot;) int id, @RequestBody Patient patient) {
+<span class="fc" id="L81">        return patientService.updatePatient(id, patient);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

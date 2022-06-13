@@ -1,0 +1,6 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+patient,com.mediscreen.patient.exception,PatientException,3,0,0,0,1,0,1,0,1,0
+patient,com.mediscreen.patient.exception,ExceptionHandler,3,0,0,0,1,0,1,0,1,0
+patient,com.mediscreen.patient.exception,DataNotFoundException,9,0,0,0,4,0,2,0,2,0
+patient,com.mediscreen.patient.service,PatientService,77,43,7,1,19,9,6,5,2,5
+patient,com.mediscreen.patient.controller,PatientController,18,67,3,3,3,17,3,7,0,7
