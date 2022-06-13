@@ -15,11 +15,20 @@ Installing the app with docker
 -Install Java and maven Globally  
 -Install @angular/cli and nodejs and docker globally 
 
--In mediscreen/frontmediscreen
+In mediscreen/frontmediscreen:
 
 -Execute command : npm install -g @angular/cli  
 -Execute command : npm install  
 -Execute command: ng build --configuration production  
+
+In mediscreen/patient :  
+-Execute comand: mvn clean install  
+
+In mediscreen/notemediscreen :  
+-Execute comand: mvn clean install  
+
+In mediscreen/report :  
+-Execute comand: mvn clean install  
 
 -In the root directory of the project /mediscreen:
 
@@ -31,11 +40,6 @@ Installing the app locally with each repositories
 -------------------------------------------------
 
 Repositories:  
--Front-end: https://github.com/Sylvainsbrr/front-mediscreen  
--noteservice: https://github.com/Sylvainsbrr/notemediscreen  
--patientservice: https://github.com/Sylvainsbrr/patient  
--reportservice: https://github.com/Sylvainsbrr/report  
-
 You will need to install MySQL and create a database with the name "patient"  
 
 You will need to install MongoDB with Angular and Nodejs  
